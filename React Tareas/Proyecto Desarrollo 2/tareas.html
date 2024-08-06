@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrador de Tareas</title>
+<script src="/classesFrontEndjs"></script>
+
+
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+
+<link rel="stylesheet" href="/bootstrap">
+<link rel="stylesheet" href="/templatemo">
+
+<!-- Load fonts style after rendering the layout styles -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="/fontawesome">
+
+<script src="jquery1"></script>
+<script src="jquery2"></script>
+<script src="bootstrapp"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+    body {
+        font-family: "Poppins", sans-serif;
+  height: 100vh;
+    }
+    #task-form {
+        -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+ 
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+  padding: 50px; /* Aumentar el relleno en todas las direcciones */
+    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    }
+    h1{
+         text-align: center;
+  color: #1b8028;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 48px !important;
+  font-weight: 400 !important;
+    }
+    label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: #0d0d0d;
+    width: 100%;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+label:hover {
+    background-color: #fff;
+    border-color: none;
+}
+    input[type="text"], select {
+        background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+    }
+
+    input[type=text]:focus {
+  background-color: #fff;
+  border: none;
+  border-bottom: 2px solid #4bcc59;
+}
+
+input[type=text]:placeholder {
+  color: #cccccc;
+  
+}
+  
+input[type="text"] {
+    /* Otras propiedades */
+    outline: none; /* Eliminar el borde de foco */
+}
+button {
+        background-color: #46ba4f;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 40px; /* Reducir el relleno */
+    font-size: 12px; /* Reducir el tamaño de la fuente */
+    }
+
+    button:hover {
+  background-color: #16a62a;
+}
+    .delete-btn {
+        background-color: #f44336;
+    }
+    .delete-btn:hover {
+        background-color: #f82516;
+    }
+    button.edit {
+        background-color: #ffa500; /* Color naranja */
+    }
+    button.delete, button.edit {
+    /* Otras propiedades */
+    padding: 8px 20px; /* Reducir el relleno */
+    font-size: 10px; /* Reducir el tamaño de la fuente */
+}
+
+    .task {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between; /* Alineación a la derecha */
+        align-items: center;
+    }
+    .task-text {
+        margin-right: auto; /* Empuja el texto a la izquierda */
+    }
+    
+    .fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  
+}
+
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+#eliminar-todas {
+    display: block;
+    margin: 0 auto; /* Esto centra el botón horizontalmente */
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/menu">
+                <img src="/logocedes" width="150px" height="150px">
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tareas">Gestión de Tareas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/menu">Regresar</a>
+                        </li>
+                       
+                    
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav><br><br>
+
+    <div class="wrapper fadeInDown">
+
+<div id="task-form">
+    <h1 class="active">Administrador de Tareas</h1><br>
+    <form id="form">
+        <label for="day">Día de la Semana:</label>
+        <select id="day" name="day">
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miércoles">Miércoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+            <option value="Sábado">Sábado</option>
+            <option value="Domingo">Domingo</option>
+        </select>
+        <label for="description">Descripción:</label>
+        <input type="text" id="description" name="description" placeholder="Ingrese la descripción de la tarea"><br><br>
+        <button type="button" onclick="confirmarTarea()">Confirmar</button>
+    </form><br>
+    <div id="task-output"></div>
+    <button id="eliminar-todas" style="display: none;" onclick="eliminarTodasLasTareas()">Eliminar Todas las Tareas</button>
+
+    </div>
+</div><br><br>
+
+<footer class="bg-dark" id="tempaltemo_footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Información Adicional</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt fa-fw"></i>
+                        VWQ7+Q32, Concepción Arriba de, Alajuelita
+                    </li>
+                    <li>
+                        <i class="fa fa-phone fa-fw"></i>
+                        <a class="text-decoration-none" href="tel:010-020-0340">8888-8888</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope fa-fw"></i>
+                        <a class="text-decoration-none" href="mailto:info@cedesdonbosco.ed.cr">infodiaryworks@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Ubicación</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li>
+                        <p><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7861.050598585387!2d-84.0942045!3d9.8901339!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e2d990cbf34f%3A0xee630299d482996e!2sConcepci%C3%B3n%20Arriba%20de%20Alajuelita!5e0!3m2!1ses-419!2scr!4v1709655697719!5m2!1ses-419!2scr" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+
+                    </li>
+                    <li>
+              
+                        <a class="text-decoration-none" href="tel:010-020-0340"></a>
+                    </li>
+                    <li>
+                        <a class="text-decoration-none" href="mailto:info@cedesdonbosco.ed.cr">	</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">DiaryWorks</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="menu">Inicio</a></li>
+                    <li><a class="text-decoration-none" href="login">Iniciar Sesión</a></li>
+                    <li><a class="text-decoration-none" href="formulario">Registrarse</a></li>
+                </ul>
+                <div class="row text-light mb-4">
+                    <div class="col-12 mb-3">
+                        <div class="w-100 my-3 border-top border-light"></div>
+                    </div>
+
+
+                    <div class="col-auto me-auto">
+                        <ul class="list-inline text-left footer-icons">
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                            </li>
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            </div>
+          
+        </div>
+
+
+    <div class="w-100 bg-black py-3">
+        <div class="container">
+            <div class="row pt-2">
+                <div class="col-12">
+                    <p class="text-left text-light">
+                        © 2024 Desarrollo Web. Todos los derechos son reservados.
+                        | Hecho por Miguel Velazquez</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<script>
+
+
+    // Objeto para almacenar las tareas
+    var tareas = {};
+
+    function confirmarTarea() {
+        var dia = document.getElementById("day").value;
+        var descripcion = document.getElementById("description").value;
+        if (tareas.hasOwnProperty(dia)) {
+            // Si ya existe una tarea para este día, agregamos la nueva descripción
+            tareas[dia].push(descripcion);
+        } else {
+            // Si no existe, creamos un array para almacenar las tareas
+            tareas[dia] = [descripcion];
+        }
+        mostrarTareas(); // Mostrar las tareas
+
+        document.getElementById("eliminar-todas").style.display = "block";
+    }
+
+
+    function mostrarTareas() {
+        var salida = document.getElementById("task-output");
+        salida.innerHTML = ""; // Limpiar el contenido anterior
+        for (var dia in tareas) {
+            tareas[dia].forEach(function(descripcion) {
+                var divTarea = document.createElement("div");
+                divTarea.classList.add("task");
+                divTarea.innerHTML = "<span class='task-text'><strong>" + dia + ":</strong> " + descripcion + "</span>" +
+                                    "<button class='edit-btn' onclick='editarTarea(\"" + dia + "\", \"" + descripcion + "\")'>Editar</button>" +
+                                    "<button class='delete-btn' onclick='eliminarTarea(\"" + dia + "\", \"" + descripcion + "\")'>Eliminar</button>";
+                salida.appendChild(divTarea);
+            });
+        }
+    }
+
+    function editarTarea(dia, descripcion) {
+        var indice = tareas[dia].indexOf(descripcion);
+        if (indice !== -1) {
+            var nuevaDescripcion = prompt("Editar descripción:", descripcion);
+            if (nuevaDescripcion !== null) {
+                tareas[dia][indice] = nuevaDescripcion;
+                mostrarTareas();
+            }
+        }
+    }
+
+    function eliminarTarea(dia, descripcion) {
+    var indice = tareas[dia].indexOf(descripcion);
+    if (indice !== -1) {
+        tareas[dia].splice(indice, 1);
+        if (tareas[dia].length === 0) {
+            delete tareas[dia];
+        }
+        mostrarTareas();
+    }
+    // Verificar si aún quedan tareas después de eliminar la tarea actual
+    var hayTareas = Object.keys(tareas).length > 0;
+    if (!hayTareas) {
+        // Si no quedan tareas, ocultar el botón "Eliminar Todas las Tareas"
+        document.getElementById("eliminar-todas").style.display = "none";
+    }
+}
+
+    function eliminarTodasLasTareas() {
+        tareas = {};
+    mostrarTareas();
+    // Ocultar el botón "Eliminar Todas las Tareas" después de eliminar todas las tareas
+    document.getElementById("eliminar-todas").style.display = "none";
+
+    }
+    
+
+    function registra() {
+        var estudianteinstanciado = new _tareas(
+
+            document.getElementById("day").value,
+            document.getElementById("description").value
+      
+
+        );
+        estudianteinstanciado.Guardar("/api/tareas", responde);
+    }
+</script>
+
+</body>
+</html>

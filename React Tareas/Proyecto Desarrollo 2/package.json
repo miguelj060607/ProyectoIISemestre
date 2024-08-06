@@ -1,0 +1,23 @@
+{
+    "name": "kmisapp",
+    "version": "0.0.1",
+    "description": "App para selección de camisas de sextos",
+    "main": "server.js",
+    "author": "Miguel Velazquez",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "cors": "^2.8.5",
+        "express": "^3.21.2",
+        "mongoose": "~5.11.19",
+        "multer": "~0.1.6",
+        "nodemailer": "^5.1.1",
+        "path": "^0.12.7"
+    },
+    "devDependencies": {
+        "nodemon": "^1.11.0"
+    },
+    "scripts": {
+        "start": "node server.js"
+    },
+    "license": "ISC"
+}

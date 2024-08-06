@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script src="/classesFrontEndjs"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="/formulariocss" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+
+
+<link rel="stylesheet" href="/bootstrap">
+<link rel="stylesheet" href="/templatemo">
+
+
+<!-- Load fonts style after rendering the layout styles -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="/fontawesome">
+
+<script src="jquery1"></script>
+<script src="jquery2"></script>
+<script src="bootstrapp"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="menu">
+                <img src="/logocedes" width="150px" height="150px">
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/menu">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/formulario">Registrarse</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav><br><br><br>
+	<!-- main -->
+	
+	<div class="wrapper fadeInDown">
+        <div id="formContent">
+          
+                <h1 class="active">Registrarse</h1><br>
+                <form>
+
+                    <input class="fadeIn second" type="text" id="nombreCompleto" name="Username" placeholder="Nombre Completo"><br>
+            <input class="fadeIn third" type="email" id="correo" name="email" placeholder="Correo" >
+           
+            
+            <input class="fadeIn forth" type="password" id="clave1" name="password" placeholder="Contraseña" >
+            <input class="fadeIn five" type="password" id="clave2" name="password" placeholder="Confirmar Contraseña"><br><br>
+            <input type="submit" value="Registrarse" class="fadeIn ten" onclick="comprobarClave()"/><br>
+        </form>
+        <div id="formFooter">
+        <p>¿Ya tienes una cuenta? <a class="underlineHover" href="/login"> ¡Inicia sesión ya!</a></p>
+    </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    var imgenBase64 = "";
+    function responde() {
+
+    }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            if (input.files[0].size < 3209715) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    imgenBase64 = e.target.result;
+                    document.getElementById('imagenminiatura').src = imgenBase64;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+                alert("Archivo es demasiado grande, excede el limite por archivo");
+            }
+        }
+    }
+    function registra() {
+        var estudianteinstanciado = new _estudiante(
+
+            document.getElementById("carnet").value,
+            document.getElementById("correo").value,
+            document.getElementById("nombreCompleto").value,
+            document.getElementById("especialidad").value,
+            document.getElementById("seccion").value,
+            imgenBase64,
+            document.getElementById('clave').value
+
+        );
+        estudianteinstanciado.Guardar("/api/estudiante", responde);
+    }
+
+</script>
+
+	</div><br>
+	<!-- //main -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Información Adicional</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            VWQ7+Q32, Concepción Arriba de, Alajuelita
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:010-020-0340">8888-8888</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="mailto:info@cedesdonbosco.ed.cr">infodiaryworks@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Ubicación</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <p><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7861.050598585387!2d-84.0942045!3d9.8901339!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e2d990cbf34f%3A0xee630299d482996e!2sConcepci%C3%B3n%20Arriba%20de%20Alajuelita!5e0!3m2!1ses-419!2scr!4v1709655697719!5m2!1ses-419!2scr" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+
+                        </li>
+                        <li>
+                  
+                            <a class="text-decoration-none" href="tel:010-020-0340"></a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none" href="mailto:info@cedesdonbosco.ed.cr">	</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">DiaryWorks</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="menu">Inicio</a></li>
+                        <li><a class="text-decoration-none" href="login">Iniciar Sesión</a></li>
+                        <li><a class="text-decoration-none" href="formulario">Registrarse</a></li>
+                    </ul>
+                    <div class="row text-light mb-4">
+                        <div class="col-12 mb-3">
+                            <div class="w-100 my-3 border-top border-light"></div>
+                        </div>
+
+
+                        <div class="col-auto me-auto">
+                            <ul class="list-inline text-left footer-icons">
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                                </li>
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                </div>
+              
+            </div>
+
+ 
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            © 2024 Desarrollo Web. Todos los derechos son reservados.
+                            | Hecho por Miguel Velazquez</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+  
+</body>
+
+<script src="/formulariojs"></script>
+</html>

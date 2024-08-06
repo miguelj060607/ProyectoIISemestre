@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="bookTitle">Libro Virtual Editable</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .page-container {
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      border: none;
+      background: none;
+    }
+
+    .page-content {
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 100px;
+      background-color: #fff;
+      border-radius: 4px;
+    }
+
+    .pagination {
+      margin-top: 20px;
+    }
+
+    .pagination button {
+      padding: 8px 16px;
+      margin-right: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .pagination button:hover {
+      background-color: #0056b3;
+    }
+
+    .button-group {
+      margin-top: 10px;
+    }
+
+    .button-group button {
+      padding: 5px 10px;
+      margin-right: 5px;
+      border: none;
+      background-color: #dc3545;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .button-group button:hover {
+      background-color: #c82333;
+    }
+
+    #saveBtn,
+    #editBtn {
+      padding: 8px 16px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      float: right;
+    }
+
+    #saveBtn:hover,
+    #editBtn:hover {
+      background-color: #218838;
+    }
+
+    #output {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="editTitle">Libro Virtual Editable</h1>
+    
+    <div class="page-container" id="page1Container">
+      <input type="text" class="page-title" value="Página 1">
+      <div class="page-content" id="page1" contenteditable="true">
+        <p>Escribe aquí...</p>
+      </div>
+      <div class="button-group" id="deleteBtn1" style="display:none;">
+        <button onclick="deletePage('page1Container')">Eliminar Página</button>
+        <button onclick="editPage('page1Container')">Editar Página</button>
+      </div>
+    </div>
+    
+    <div class="page-container" id="page2Container">
+      <input type="text" class="page-title" value="Página 2">
+      <div class="page-content" id="page2" contenteditable="true">
+        <p>Escribe aquí...</p>
+      </div>
+      <div class="button-group" id="deleteBtn2" style="display:none;">
+        <button onclick="deletePage('page2Container')">Eliminar Página</button>
+        <button onclick="editPage('page2Container')">Editar Página</button>
+      </div>
+    </div>
+    
+    <div class="page-container" id="page3Container">
+      <input type="text" class="page-title" value="Página 3">
+      <div class="page-content" id="page3" contenteditable="true">
+        <p>Escribe aquí...</p>
+      </div>
+      <div class="button-group" id="deleteBtn3" style="display:none;">
+        <button onclick="deletePage('page3Container')">Eliminar Página</button>
+        <button onclick="editPage('page3Container')">Editar Página</button>
+      </div>
+    </div>
+
+    <button id="saveBtn" onclick="saveContent()">Guardar</button>
+    <button id="editBtn" onclick="editTitle()">Editar Título</button>
+    
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function saveContent() {
+      const saveBtn = document.getElementById('saveBtn');
+      const output = document.getElementById('output');
+
+      output.innerHTML = ""; // Limpiar el contenido anterior
+
+      const pageContainers = document.querySelectorAll('.page-container');
+
+      pageContainers.forEach((container, index) => {
+        const title = container.querySelector('.page-title').value;
+        const content = container.querySelector('.page-content').innerHTML;
+        const pageNumber = index + 1;
+
+        // Mostrar el contenido guardado
+        const pageOutput = document.createElement('div');
+        pageOutput.innerHTML = `<strong>${title}:</strong> ${content}`;
+        output.appendChild(pageOutput);
+      });
+      
+      alert('Contenido guardado');
+      showButtons();
+    }
+
+    function editTitle() {
+      const title = document.getElementById('bookTitle');
+      title.setAttribute('contenteditable', 'true');
+      title.focus();
+    }
+
+    function deletePage(containerId) {
+      const container = document.getElementById(containerId);
+      container.remove();
+    }
+
+    function editPage(containerId) {
+      const container = document.getElementById(containerId);
+      const titleInput = container.querySelector('.page-title');
+      const contentEditable = container.querySelector('.page-content');
+
+      titleInput.disabled = !titleInput.disabled;
+      contentEditable.contentEditable = !contentEditable.contentEditable;
+
+      const buttons = container.querySelector('.button-group');
+      buttons.style.display = buttons.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function showButtons() {
+      const buttons = document.querySelectorAll('.button-group');
+      buttons.forEach(button => {
+        button.style.display = 'block';
+      });
+    }
+  </script>
+</body>
+</html>

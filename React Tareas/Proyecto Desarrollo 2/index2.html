@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="stylesheet" href="/bootstrap">
+    <link rel="stylesheet" href="/templatemo">
+    
+    
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/fontawEsome">
+
+    <script src="/jquery1"></script>
+    <script src="/jquery2"></script>
+    <script src="/bootstrapp"></script>
+
+</head>
+<style>
+.contenedor {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo{
+  text-align: center;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 28px !important;
+  font-weight: 300 !important;
+}
+.desc{
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  color: #16a62a;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  width: 22em;
+  max-width: 80%;
+ 
+  padding: 3em 0;
+  background: #FFF;
+  box-shadow: 0 0 6px 0 rgba(36, 117, 29, 0.12);
+  transition: all 0.35s ease;
+}
+
+.card::before, .card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #1b8028;
+  height: 4px;
+}
+
+.card::before {
+  width: 0;
+  opacity: 0;
+  transition: opacity 0 ease, width 0 ease;
+  transition-delay: 0.5s;
+}
+
+.card::after {
+  width: 100%;
+  background: white;
+  transition: width 0.5s ease;
+}
+
+.card .content {
+  width: 18em;
+  max-width: 80%;
+}
+
+.card .logo {
+  margin: 0 0 1em;
+  width: 10.625em;
+  transition: all 0.35s ease;
+}
+
+.card .h6 {
+  color: #999;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.card .hover_content {
+  overflow: hidden;
+  max-height: 0;
+  transform: translateY(1em);
+  transition: all 0.55s ease;
+}
+
+.card .hover_content p {
+  margin: 1em;
+  color: #6E6E70;
+  line-height: 1.4em;
+  text-align: justify;
+}
+
+.card:hover {
+  width: 24em;
+  box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
+}
+
+.card:hover::before {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s ease, width 0.5s ease;
+  transition-delay: 0;
+}
+
+.card:hover::after {
+  width: 0;
+  opacity: 0;
+  transition: width 0 ease;
+}
+
+.card:hover .logo {
+  margin-bottom: 0.5em;
+}
+
+.contenido{
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px !important;
+  font-weight: 300 !important;
+  text-align: justify;
+  margin: auto;
+  text-align: center; /* Centra horizontalmente el texto */
+
+}
+
+.card:hover .hover_content {
+  max-height: 10em;
+  transform: none;
+}
+
+
+
+
+
+
+
+.section-title{
+  text-align: center;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 28px !important;
+  font-weight: 300 !important;
+  color: #1b8028;
+}
+
+.section-subtitle{
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+
+}
+
+.section-invitation {
+  padding: 100px 0;
+  background-color: #f9f9f9;
+}
+
+.invitation-image {
+  max-width: 60%;
+  height: auto;
+}
+
+.invitation-content {
+  margin-bottom: 40px;
+}
+
+.invitation-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px !important;
+  font-weight: 300 !important;
+  text-align: justify;
+  margin: auto;
+  text-align: justify; /* Centra horizontalmente el texto */
+}
+
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: #1b8028;
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}
+</style>
+<body>
+
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/menu">
+                <img src="/logocedes" width="150px" height="150px">
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index2">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tareas">Gestión de Tareas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/formulario">Registrarse</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div><br>
+
+
+
+    <!-- Start Banner Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+           
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="/camisa" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left align-self-center">
+                                <h1 class="h1 text-success"><b>DiaryWorks</b> <br>te invita a:</h1>
+                                <h3 class="h2">Explorar tu mundo interior y reflexionar con tu diario personal:
+                                </h3>
+                                <p> Registra tus pensamientos, emociones y experiencias más significativas en un espacio íntimo y libre de juicios. Observa cómo tu diario personal se convierte en un reflejo fiel de tu viaje personal, una herramienta poderosa para el autoconocimiento y el crecimiento.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="/sudadera" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1">Y también...</h1>
+                                <h3 class="h2">Mantener tu vida organizada y productiva con la gestión de tareas semanales:</h3>
+                                <p>Organiza tus actividades, establece metas y realiza un seguimiento de tu progreso semana a semana. Con DairyWorks, planificar y completar tus tareas es más fácil que nunca, permitiéndote disfrutar de una vida más equilibrada y satisfactoria.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+                   
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+          <i class="fas fa-chevron-left"></i>
+      </a>
+      <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+          <i class="fas fa-chevron-right"></i>
+      </a>
+  </div>
+    </div><br>
+    <!-- End Banner Hero -->
+
+    <!-- Start Categories of The Month -->
+
+    
+    <section class="colorverde">
+
+        <div class="row text-center pt-3">
+        <div class="row">
+      
+          <section class="contenedor">
+            <div class="card">
+              <div class="content">
+              <p class="logo">Diario Personal</p>
+                <p class="desc">Tu espacio intimo</p>
+                <div class="hover_content">
+                  <p class="contenido">Libera tus pensamientos y emociones en un espacio dedicado solo para ti. Tu diario personal en DairyWorks te ofrece la libertad para expresarte sin límites.</p>
+                </div>
+              </div>
+            </div>       
+            <div class="card">
+              <div class="content">
+              <p class="logo">Gestión de Tareas</p>
+                <p class="desc">Mantén el control</p>
+                <div class="hover_content">
+                  <p class="contenido">Organiza tus responsabilidades semanales y mantén el enfoque en tus objetivos con nuestra intuitiva herramienta de gestión de tareas.</p>
+                </div>
+              </div>
+            </div>     
+            <div class="card">
+              <div class="content">
+              <p class="logo">Recordatorios</p>
+                <p class="desc">No olvides nada</p>
+                <div class="hover_content">
+                  <p class="contenido">No olvides ninguna tarea importante. Con los recordatorios integrados en DairyWorks, mantén tus fechas límite bajo control.</p>
+                </div>
+              </div>
+            </div>    
+          </div>    
+            </section><br><br><br><br>
+
+            <section id="invitation" class="section-invitation">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <img src="/invitacion" alt="Invitación" class="invitation-image">
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="text-center">
+                      <h2 class="section-title">¡Explora, Registra, Organiza!</h2>
+                      <p class="section-subtitle">Descubre el poder de DairyWorks</p>
+                      <div class="invitation-content">
+                        <p class="invitation-text">Te invitamos a explorar tu mundo interior y mantener tu vida organizada y productiva con DairyWorks. Registra tus pensamientos, emociones y experiencias en un espacio personalizado y seguro. Organiza tus responsabilidades semanales y mantén el enfoque en tus objetivos con nuestra intuitiva herramienta de gestión de tareas.</p><br>
+                        <p class="invitation-text">Únete hoy mismo y descubre una nueva forma de gestionar tu vida y alcanzar tus metas.</p><br>
+                        <a href="/formulario" class="Btn">
+                          <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                          <div class="text">Iniciar</div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+ 
+
+
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2c text-light border-bottom pb-3 border-light">Información Adicional</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            VWQ7+Q32, Concepción Arriba de, Alajuelita
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:010-020-0340">8888-8888</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="mailto:info@cedesdonbosco.ed.cr">infodiaryworks@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2c text-light border-bottom pb-3 border-light">Ubicación</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                           <p><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7861.050598585387!2d-84.0942045!3d9.8901339!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e2d990cbf34f%3A0xee630299d482996e!2sConcepci%C3%B3n%20Arriba%20de%20Alajuelita!5e0!3m2!1ses-419!2scr!4v1709655697719!5m2!1ses-419!2scr" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+                        </li>
+                      
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2c text-light border-bottom pb-3 border-light">DiaryWorks</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="menu">Inicio</a></li>
+                        <li><a class="text-decoration-none" href="login">Iniciar Sesión</a></li>
+                        <li><a class="text-decoration-none" href="formulario">Registrarse</a></li>
+                    </ul>
+                    <div class="row text-light mb-4">
+                        <div class="col-12 mb-3">
+                            <div class="w-100 my-3 border-top border-light"></div>
+                        </div>
+
+
+                        <div class="col-auto me-auto">
+                            <ul class="list-inline text-left footer-icons">
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                                </li>
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                </div>
+              
+            </div>
+
+ 
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            © 2024 Desarrollo Web. Todos los derechos son reservados.
+                            | Hecho por Miguel Velazquez</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Script -->
+
+    <!-- End Script -->
+</body>
+
+</html>
